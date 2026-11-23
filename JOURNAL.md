@@ -24,7 +24,7 @@ The issue estimates 2 to 3 hours, and I have budgeted 3 to 4 hours to include ve
 
 ## Unit 8 — Reproduction & solution planning
 
-**Reproduction commit link:** Pending. After committing and pushing this reproduction note, I will add the GitHub commit URL here.
+**Reproduction commit link:** https://github.com/abeeralrijal/pathreview-ai201-fa26-howard/commit/5badb7d8f07ab0bc2f92a0877704725027c861ac
 
 **Reproduction summary:**
 I reproduced the documentation gap by opening the Profiles and Reviews sections in my local `docs/API.md` and comparing them with `create_profile_endpoint` and `ReviewCreate`. The guide lists both POST endpoints but omits their request fields, content types, and example values, even though the backend already defines them.
