@@ -51,3 +51,11 @@ The output is an updated `docs/API.md` with request body documentation for both 
 - GitHub usernames and portfolio URLs have maximum lengths of 255 and 500 characters respectively in `ProfileCreate`. Example values must stay within those limits.
 - Review requests must include a valid UUID for `profile_id`. Missing IDs, malformed UUIDs, nonexistent profiles, and profiles owned by another user must not be presented as valid successful examples.
 - Both routes depend on the current authenticated user. Example commands must show how to supply a token without including real credentials.
+
+
+### Unit 9 progress
+
+Steps 1 through 3 are implemented in `docs/API.md`. Step 4 is covered by two tests in `tests/unit/test_api_documentation.py`: they parse the documented JSON and curl examples, validate the body values against the request schemas, and check authentication and multipart upload syntax. Both tests failed against the original missing examples and passed with the documentation added. The examples have not been sent to a live API.
+
+Local quality checks, unit tests, and frontend tests pass. The integration directory has no tests; its local command exits with code 5, which the current CI workflow accepts. Source review confirmed the upload MIME allowlist and profile length limits. The guide describes those limits without promising a validation status for overlong profile strings. It recommends using an existing owned profile without claiming that review creation enforces ownership. PDF parsing was not changed or tested.
+

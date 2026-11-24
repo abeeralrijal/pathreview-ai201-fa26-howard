@@ -45,3 +45,38 @@ This reproduction is a comparison of the local documentation and source code. It
 
 **Blockers or open questions:**
 There are no blockers to writing the documentation. The upload code accepts plain text as well as PDF and Markdown, so the guide needs to reflect the actual MIME allowlist. I will verify the examples against the route and schema definitions and avoid claiming that live requests have been tested until I run them. The plan records the validation and PDF parsing details that need care during implementation.
+
+
+## Unit 9: Solution building & PR submission
+
+### Check-in 1 (mid-week)
+
+**Current progress:**
+The request documentation for both endpoints is implemented in `docs/API.md`. It includes field tables, content types, authentication instructions, and curl examples. The source comparison and documentation tasks in steps 1 through 3 of `PLAN.md` are complete. Two regression tests were added to validate the examples against the request schemas; both failed before the documentation was added and passed afterward.
+
+**Next steps:**
+Review the local diff, commit and push the changes, and open a draft PR using the repository template. Request feedback from a classmate or mentor in the cohort's Slack channel. Address the feedback, check all five CI jobs, and add the submitted PR link below before the deadline.
+
+**Blockers:**
+No implementation blockers remain. Peer feedback and PR CI results are pending because no PR has been opened as part of this work.
+
+---
+
+### Check-in 2 (end of week)
+
+**PR link:** Pending. Add the PR URL after opening it, and confirm it is ready for review before submission.
+
+**Branch:** `docs/37-api-request-body-schemas`
+
+**What you built:**
+The API reference now explains the multipart request for `POST /profiles` and the JSON request for `POST /reviews`. Each request field has a type, required status, description, and example value. The guide also includes authenticated curl examples and explains optional uploads and valid profile IDs.
+
+**Tests added or updated:**
+Added `tests/unit/test_api_documentation.py` with two unit tests that read the examples directly from `docs/API.md`. They validate the review JSON against `ReviewCreate`, check that the review curl body matches that JSON, and validate the profile curl field names, file upload syntax, authentication header, and text values against `ProfileCreate`. The tests cover example construction, not live API requests or successful review processing. No xfail marker or baseline suppression was tied to issue #37, so none was removed.
+
+**Self-review confirmation:**
+`make check` passes, including Ruff, Black, and mypy. `make test-unit` passes with 377 tests passed and 53 expected failures. The first unit run could not download tiktoken's encoding data in the restricted environment; the rerun with network access passed. The frontend tests also pass with 18 tests passed. `make test-integration` collects no tests and exits with code 5; the existing CI workflow explicitly treats this empty suite as success. These are local results. The five PR CI jobs have not yet been verified.
+
+**Draft PR feedback received from:** None yet.
+
+Before submission, I still need to add the PR link, record any peer feedback, and confirm that the PR is ready for review.
