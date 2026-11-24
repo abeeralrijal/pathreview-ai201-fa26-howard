@@ -58,13 +58,13 @@ The request documentation for both endpoints is implemented in `docs/API.md`. It
 Review the local diff, commit and push the changes, and open a draft PR using the repository template. Request feedback from a classmate or mentor in the cohort's Slack channel. Address the feedback, check all five CI jobs, and add the submitted PR link below before the deadline.
 
 **Blockers:**
-No implementation blockers remain. Peer feedback and PR CI results are pending because no PR has been opened as part of this work.
+No implementation blockers remain. The remaining steps at this stage were PR submission, peer feedback, and CI verification.
 
 ---
 
 ### Check-in 2 (end of week)
 
-**PR link:** Pending. Add the PR URL after opening it, and confirm it is ready for review before submission.
+**PR link:** https://github.com/codepath/pathreview-ai201-fa26-howard/pull/107
 
 **Branch:** `docs/37-api-request-body-schemas`
 
@@ -75,8 +75,12 @@ The API reference now explains the multipart request for `POST /profiles` and th
 Added `tests/unit/test_api_documentation.py` with two unit tests that read the examples directly from `docs/API.md`. They validate the review JSON against `ReviewCreate`, check that the review curl body matches that JSON, and validate the profile curl field names, file upload syntax, authentication header, and text values against `ProfileCreate`. The tests cover example construction, not live API requests or successful review processing. No xfail marker or baseline suppression was tied to issue #37, so none was removed.
 
 **Self-review confirmation:**
-`make check` passes, including Ruff, Black, and mypy. `make test-unit` passes with 377 tests passed and 53 expected failures. The first unit run could not download tiktoken's encoding data in the restricted environment; the rerun with network access passed. The frontend tests also pass with 18 tests passed. `make test-integration` collects no tests and exits with code 5; the existing CI workflow explicitly treats this empty suite as success. These are local results. The five PR CI jobs have not yet been verified.
 
-**Draft PR feedback received from:** None yet.
+- [x] `make check` passes.
+- [x] `make test-unit` passes.
 
-Before submission, I still need to add the PR link, record any peer feedback, and confirm that the PR is ready for review.
+`make check` passes, including Ruff, Black, and mypy. `make test-unit` passes with 377 tests passed and 53 expected failures. The first unit run could not download tiktoken's encoding data in the restricted environment; the rerun with network access passed. The frontend tests also pass with 18 tests passed. `make test-integration` collects no tests and exits with code 5; the existing CI workflow explicitly treats this empty suite as success. The PR is open and ready for review. All five GitHub CI jobs passed: lint, typecheck, test-unit, test-integration, and frontend.
+
+**Draft PR feedback received from:** None. I requested feedback, but did not receive a response before submitting. Because I submitted late, I did not leave enough time for peer feedback.
+
+The PR is ready for review with all five CI checks passing. Peer feedback was not received, so I have not claimed that a peer reviewed the work.
