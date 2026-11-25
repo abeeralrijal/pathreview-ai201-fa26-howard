@@ -84,3 +84,36 @@ Added `tests/unit/test_api_documentation.py` with two unit tests that read the e
 **Draft PR feedback received from:** None. I requested feedback, but did not receive a response before submitting. Because I submitted late, I did not leave enough time for peer feedback.
 
 The PR is ready for review with all five CI checks passing. Peer feedback was not received, so I have not claimed that a peer reviewed the work.
+
+## Unit 10 — Iteration & reflection
+
+### Review record
+
+**Did you receive reviewer feedback?**
+
+- [ ] Yes
+- [x] No
+
+As of November 25, I had received no reviewer comments, so there were no review responses or follow-up changes to document. [Pull request #107](https://github.com/codepath/pathreview-ai201-fa26-howard/pull/107)
+
+### Reflection
+
+#### 1. What was harder than you expected?
+
+I chose issue #37 because documenting two existing endpoints looked like a manageable first contribution, but verification took more work than I expected. The first full unit test run failed because the restricted environment blocked the download of tiktoken's encoding data. I reran it with network access and got 377 passes and 53 expected failures. [Issue #37](https://github.com/codepath/pathreview-ai201-fa26-howard/issues/37)
+
+#### 2. What did you learn about working in a large codebase?
+
+I learned to trace a request across the route and the schema before writing about it in `docs/API.md`. The route in `api/routes/profiles.py` defined the multipart fields and upload rules, while `ProfileCreate` defined the text length limits. The route's docstring mentioned PDF and Markdown, but reading the upload check showed that it also accepted plain text.
+
+#### 3. How did AI tools help, and where did they fall short?
+
+Codex helped me revisit my Unit 8 plan and Unit 9 notes so I could see how my approach changed as I worked on issue #37. It could summarize the tests I added, but I had to decide what those results justified saying in the PR: the examples matched the request schemas, and I would still need to run them against the API to verify the full workflow. Using AI to organize my notes saved time, and checking its wording against the code and test results helped me make claims I could explain to a reviewer.
+
+#### 4. What would you do differently if you started over?
+
+I would open PR #107 as a draft earlier because my late submission left little time for peer feedback. I would ask a peer to try the curl examples with a running instance, starting with an authenticated profile request and using the returned ID to start a review. That would show me where the guide leaves readers guessing and give me time to revise it before submission.
+
+#### 5. What are you most proud of from this module?
+
+I'm most proud that I added two tests in `tests/unit/test_api_documentation.py` that read the examples directly from the guide. Both failed against the original guide and passed after I added the examples, so the tests can catch future edits that break the documented request format. I can explain exactly what they verify, including the multipart field names and the review UUID, and what would still need a live test. [Implementation commit](https://github.com/abeeralrijal/pathreview-ai201-fa26-howard/commit/f52f9575e8b5aa0723526924c60b7baa464eefd3)
